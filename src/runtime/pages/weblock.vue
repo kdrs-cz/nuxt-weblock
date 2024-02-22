@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-  import {useRuntimeConfig, useCookie, navigateTo} from '#app';
+  import {useRuntimeConfig, useCookie, navigateTo, ref} from '#app';
 
   const config = useRuntimeConfig();
   const password = ref();
