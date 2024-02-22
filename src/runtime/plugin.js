@@ -1,4 +1,4 @@
-import {defineNuxtPlugin, addRouteMiddleware, useCookie} from '#app';
+import {defineNuxtPlugin, addRouteMiddleware, useCookie, navigateTo} from '#app';
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('app:created', () => {
