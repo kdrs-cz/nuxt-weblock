@@ -17,13 +17,13 @@ Nuxt 3 module to lock your whole website with password.
 
 ```bash
 # Using pnpm
-pnpm add -D nuxt-weblock
+pnpm add nuxt-weblock
 
 # Using yarn
-yarn add --dev nuxt-weblock
+yarn add nuxt-weblock
 
 # Using npm
-npm install --save-dev nuxt-weblock
+npm install nuxt-weblock
 ```
 
 2. Add `nuxt-weblock` to the `modules` section of `nuxt.config.ts/js` and configure `nuxt-weblock` by defining `webLock` section
