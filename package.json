@@ -1,6 +1,6 @@
 {
   "name": "nuxt-weblock",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Nuxt 3 module to lock your whole website with password.",
   "repository": {
     "type": "git",
