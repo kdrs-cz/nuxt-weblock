@@ -1,14 +1,14 @@
 export default defineNuxtConfig({
-	modules: [
-		'../src/module'
-	],
+  modules: [
+    '../src/module'
+  ],
 
-	webLock: {
-		password: '123456',
-		isEnabled: true
-	},
+  webLock: {
+    password: '123456',
+    isEnabled: true
+  },
 
-	devtools: {
-		enabled: true
-	}
+  devtools: {
+    enabled: true
+  }
 });
