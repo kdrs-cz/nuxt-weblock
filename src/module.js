@@ -10,7 +10,7 @@ export default defineNuxtModule({
 	defaults: {},
 
 	setup(options, nuxt) {
-		const resolver = createResolver(import.meta.url);
+		const {resolve} = createResolver(import.meta.url);
 
 		if (options.isEnabled) {
 			nuxt.options.runtimeConfig.public.webLock = defu(nuxt.options.runtimeConfig.public.webLock, {
@@ -21,11 +21,11 @@ export default defineNuxtModule({
 				pages.push({
 					name: 'WebLockPage',
 					path: '/weblock',
-					file: resolver.resolve('./runtime/pages/login.vue')
+					file: resolve('./runtime/pages/weblock.vue')
 				});
 			});
 
-			addPlugin(resolver.resolve('./runtime/plugin'));
+			addPlugin(resolve('./runtime/plugin'));
 		}
 	}
 });
