@@ -5,11 +5,14 @@
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-Nuxt 3 module to lock your whole website with password.
+Nuxt 3 module to lock your whole website with password. All routes will be inaccessible until the correct password is entered.
 
 ## Features
 
 - 🔒 Lock your whole website with password. Ideal for staging environments, client previews, etc.
+- 🍪 Successfully entered password will be stored in a cookie, so you don't have to enter it again.
+
+![nuxt-weblock screenshot](https://i.imgur.com/xXWNGrF.png)
 
 ## Quick Setup
 
@@ -46,22 +49,22 @@ That's it! You can now use WebLock Module in your Nuxt app ✨
 
 ```bash
 # Install dependencies
-npm install
+yarn install
 
 # Generate type stubs
-npm run dev:prepare
+yarn run dev:prepare
 
 # Develop with the playground
-npm run dev
+yarn run dev
 
 # Build the playground
-npm run dev:build
+yarn run dev:build
 
 # Run ESLint
-npm run lint
+yarn run lint
 
 # Release new version
-npm run release
+yarn run release
 ```
 
 <!-- Badges -->
