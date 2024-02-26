@@ -1,6 +1,6 @@
 {
   "name": "nuxt-weblock",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Nuxt 3 module to lock your whole website with password.",
   "repository": {
     "type": "git",
@@ -26,9 +26,7 @@
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "release": "npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
-    "lint": "eslint .",
-    "test": "vitest run",
-    "test:watch": "vitest watch"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@nuxt/kit": "^3.10.2"
