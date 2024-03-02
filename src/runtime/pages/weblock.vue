@@ -1,34 +1,36 @@
 <template>
-  <div class="weblock">
-    <form
-      class="weblock__form"
-      @submit.prevent="login"
-    >
-      <h1 class="weblock__title">
-        This website is locked.
-      </h1>
+  <div class="weblock-wrap">
+    <div class="weblock">
+      <form
+        class="weblock__form"
+        @submit.prevent="login"
+      >
+        <h1 class="weblock__title">
+          This website is locked.
+        </h1>
 
-      <div class="weblock__input-wrap">
-        <input
-          v-model="password"
-          type="password"
-          class="weblock__input"
-        >
+        <div class="weblock__input-wrap">
+          <input
+            v-model="password"
+            type="password"
+            class="weblock__input"
+          >
 
-        <button class="weblock__button">
-          Unlock
-        </button>
-      </div>
-
-      <transition>
-        <div
-          v-show="isWrongPassword"
-          class="weblock__error"
-        >
-          The password you entered is incorrect.
+          <button class="weblock__button">
+            Unlock
+          </button>
         </div>
-      </transition>
-    </form>
+
+        <transition>
+          <div
+            v-show="isWrongPassword"
+            class="weblock__error"
+          >
+            The password you entered is incorrect.
+          </div>
+        </transition>
+      </form>
+    </div>
   </div>
 </template>
 
