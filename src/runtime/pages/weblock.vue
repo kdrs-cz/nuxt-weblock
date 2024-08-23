@@ -35,9 +35,10 @@
 </template>
 
 <script setup>
-  import {ref} from 'vue';
-  import {useRuntimeConfig, useCookie, navigateTo} from '#app';
+  import {ref, onMounted} from 'vue';
+  import {useRuntimeConfig, useCookie, navigateTo, useRoute} from '#app';
 
+  const route = useRoute();
   const config = useRuntimeConfig();
   const password = ref();
 
@@ -53,30 +54,31 @@
       isWrongPassword.value = true;
     }
   };
+
+  onMounted(async () => {
+    if(loginCookie.value && route?.query?.origin) {
+      await navigateTo(route.query.origin);
+    }
+  });
 </script>
 
 <style>
-  body {
-    padding: 0;
-    margin: 0;
-  }
+body{padding:0;margin:0}
 </style>
 
 <style scoped>
   .weblock {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0;
-    margin: 0;
+    inset: 0;
+    z-index: 100000;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
+    padding: 0;
+    margin: 0;
     background: linear-gradient(45deg, #141E30, #243B55);
   }
 
@@ -92,11 +94,11 @@
   }
 
   .weblock__title {
-    font-size: 22px;
-    color: #fff;
     margin-top: 0;
     margin-bottom: 1em;
+    font-size: 22px;
     font-weight: 500;
+    color: #ffffff;
   }
 
   .weblock__input-wrap {
@@ -104,38 +106,38 @@
   }
 
   .weblock__input {
-    appearance: none;
-    background-color: #eaeaff;
-    font-family: inherit;
+    flex: 1;
+    min-width: 0;
+    height: 36px;
     padding: 5px 10px;
     margin: 0;
-    height: 36px;
+    font-family: inherit;
     font-size: 14px;
+    appearance: none;
+    background-color: #eaeaff;
     border: 0;
     border-radius: 3px 0 0 3px;
-    min-width: 0;
-    flex: 1;
   }
 
   .weblock__button {
+    flex: 0 0 80px;
+    height: 36px;
+    padding: 10px;
+    margin: 0;
+    font-family: inherit;
+    font-size: 14px;
+    color: #ffffff;
     appearance: none;
+    cursor: pointer;
+    background-color: #232323;
     border: 0;
     border-radius: 0 3px 3px 0;
-    background-color: #232323;
-    color: #fff;
-    font-family: inherit;
-    margin: 0;
-    padding: 10px;
-    height: 36px;
-    font-size: 14px;
-    flex: 0 0 80px;
-    cursor: pointer;
   }
 
   .weblock__error {
     position: absolute;
-    color: #D73E5E;
     margin-top: 16px;
+    color: #D73E5E;
   }
 
   .v-enter-active,
