@@ -1,7 +1,15 @@
-import {defineNuxtPlugin, addRouteMiddleware, useCookie, navigateTo} from '#app';
+import {defineNuxtPlugin, addRouteMiddleware, useCookie, navigateTo, useRuntimeConfig} from '#app';
 
 export default defineNuxtPlugin(() => {
   addRouteMiddleware('weblock-check', (to, from) => {
+    const config = useRuntimeConfig();
+    const excludeRoutes = config.public.webLock?.excludeRoutes || [];
+
+    // Skip middleware if the route is in the excludeRoutes array
+    if (excludeRoutes.includes(to.path)) {
+      return;
+    }
+
     let loginCookie = useCookie('loggedIn'); 
 
     if (process.client) {
