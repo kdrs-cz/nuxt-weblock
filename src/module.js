@@ -16,6 +16,10 @@ export default defineNuxtModule({
         password: options.password
       };
 
+      if(options.excludeRoutes) {
+        nuxt.options.runtimeConfig.public.webLock.excludeRoutes = options.excludeRoutes
+      }
+
       nuxt.hook('pages:extend', (pages) => {
         pages.push({
           name: 'WebLockPage',
