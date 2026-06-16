@@ -42,7 +42,13 @@
   const config = useRuntimeConfig();
   const password = ref();
 
-  const loginCookie = useCookie('loggedIn');
+  const cookieOptions = {};
+  const cookieMaxAge = config.public.webLock?.cookieMaxAge;
+  if (cookieMaxAge != null) {
+    cookieOptions.maxAge = cookieMaxAge * 3600;
+  }
+
+  const loginCookie = useCookie('loggedIn', cookieOptions);
   const isWrongPassword = ref(false);
 
   const login = async () => {
