@@ -20,6 +20,11 @@ export default defineNuxtModule({
         nuxt.options.runtimeConfig.public.webLock.excludeRoutes = options.excludeRoutes
       }
 
+      // cookieMaxAge: number of hours before the login cookie expires. Omit for a session cookie.
+      if(options.cookieMaxAge != null) {
+        nuxt.options.runtimeConfig.public.webLock.cookieMaxAge = options.cookieMaxAge
+      }
+
       nuxt.hook('pages:extend', (pages) => {
         pages.push({
           name: 'WebLockPage',

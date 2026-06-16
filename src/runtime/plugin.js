@@ -5,28 +5,21 @@ export default defineNuxtPlugin(() => {
     const config = useRuntimeConfig();
     const excludeRoutes = config.public.webLock?.excludeRoutes || [];
 
-    // Skip middleware if the route is in the excludeRoutes array
     if (excludeRoutes.includes(to.path)) {
       return;
     }
 
-    let loginCookie = useCookie('loggedIn'); 
+    const cookieOptions = {};
+    const cookieMaxAge = config.public.webLock?.cookieMaxAge;
+    if (cookieMaxAge != null) {
+      cookieOptions.maxAge = cookieMaxAge * 3600;
+    }
 
-    if (process.client) {
-      if(loginCookie.value === undefined) {
-        const date = new Date();
-        date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
-    
-        loginCookie = useCookie('loggedIn', {
-          default: () => (false),
-          expires: date
-        });
-      } 
-    }   
+    const loginCookie = useCookie('loggedIn', cookieOptions);
 
     if (loginCookie.value !== true && to.name !== 'WebLockPage') {
       return navigateTo('/weblock?origin=' + from.path);
     }
-   
+
   }, {global: true});
 });
