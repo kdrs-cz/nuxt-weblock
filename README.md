@@ -45,6 +45,29 @@ export default defineNuxtConfig({
 
 That's it! You can now use WebLock Module in your Nuxt app ✨
 
+## Configuration
+
+| Option | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `password` | `string` | ✅ | — | Password to unlock the site |
+| `isEnabled` | `boolean` | ✅ | — | Toggle the lock (set `false` in production) |
+| `excludeRoutes` | `string[]` | ❌ | `[]` | Routes to bypass the lock (e.g. `['/api/health']`) |
+| `cookieMaxAge` | `number` | ❌ | session | Hours until the login cookie expires. Omit for a session cookie |
+
+### Full example
+
+```js
+export default defineNuxtConfig({
+  modules: ['nuxt-weblock'],
+  webLock: {
+    password: 'my-secret',
+    isEnabled: true,
+    excludeRoutes: ['/api/health'],
+    cookieMaxAge: 24 // cookie expires after 24 hours
+  }
+})
+```
+
 ## Development
 
 ```bash
